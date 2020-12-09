@@ -1,0 +1,36 @@
+Create Database reception;
+
+use database reception;
+
+create table Room(
+id_room int primary key not null identity(1,1),
+occuped date,
+floors int not null,
+commercial varchar(3) not null,
+number_of_beds int not null);
+
+create table Rooms(
+id_room int foreign key references Room(id_room) not null ,
+cost_per_night money not null,
+class_category varchar(30) not null);
+
+create table guests(
+Surname varchar(30) not null,
+Name varchar(30) not null,
+id_room int foreign key references Room(id_room) not null,
+bday date not null,
+Passport_person varchar(50) not null,
+Check (Passport_person like '[0-9][0-9] [0-9][0-9] [0-9][0-9][0-9][0-9][0-9]'),
+Phone varchar(50) not null,
+Check (Phone like '([0-9][0-9][0-9]) [0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'));
+
+create table Arendators(
+Id_room int foreign key references Room(id_room) not null ,
+Surname varchar(30) not null,
+Name varchar(30) not null,
+name_place varchar(30) not null,
+payment_per_month money,
+Passport_person varchar(50) not null,
+Check (Passport_person like '[0-9][0-9] [0-9][0-9] [0-9][0-9][0-9][0-9][0-9]'),
+Phone varchar(50) not null,
+Check (Phone like '([0-9][0-9][0-9]) [0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]')
