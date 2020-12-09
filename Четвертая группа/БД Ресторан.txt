@@ -1,63 +1,64 @@
-create database restoran
+create database restoran;
 
-use restoran
+use restoran;
 
 create table dolznost
 (id int primary key,
 nazvanie varchar(20),
 oklad money
-)
+);
 
 create table personal
 (id int primary key,
 FIO varchar(30),
 telefon varchar(11),
 dolznost int foreign key references dolznost(id)
-)
+);
 
 create table zakaz
 (id int primary key,
 data datetime,
 cena money
-)
+);
 
 create table svyzp
 (id int primary key,
 personal int foreign key references personal(id),
 zakaz int foreign key references zakaz(id)
-)
+);
 
 create table menu
 (id int primary key,
 nazvanie varchar(20),
-cena money)
+cena money);
 
 create table bludozakaz
 (id int primary key,
 zakaz int foreign key references zakaz(id),
-bludo int foreign key references menu(id))
+bludo int foreign key references menu(id));
 
 create table sklad
 (id int primary key,
 nazvanie varchar(20),
-cena money)
+cena money);
 
 create table skladmenu
 (id int primary key,
 ingrid int foreign key references sklad(id),
-bludo int foreign key references menu(id))
+bludo int foreign key references menu(id));
 
 create table postavshik
 (id int primary key,
 nazvanie varchar(30),
-telefon varchar(11))
+telefon varchar(11));
 
 create table postavka
 (id int primary key,
 data date,
-postavshik int foreign key references postavshik(id))
+postavshik int foreign key references postavshik(id));
+
 create table postavkasklad
 (id int primary key,
 kolvo int,
 postavka int foreign key references postavka(id),
-ingrid int foreign key references sklad(id))
+ingrid int foreign key references sklad(id));
