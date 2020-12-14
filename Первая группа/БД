@@ -1,0 +1,26 @@
+CREATE DATABASE DB_HRD;
+
+Use db_hrd;
+
+CREATE TABLE data_worker(
+Id int primary key,
+FIO varchar, 
+Date_of_birth varchar, 
+Postion varchar, 
+Number_of_phone int, 
+Pasport blob, 
+Pasport_zag blob, 
+SNILS int, 
+INN int, 
+Non_vo_bel int, 
+Doc_about_aducation blob, 
+Photo blob
+);
+
+Create table datavacancies(
+Id int primary key, 
+Position varchar, 
+Experience varchar,
+ Work_pay varchar, 
+Description varchar
+);
